@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 return new class extends Migration
 {
@@ -13,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('middle_name');
+            $table->string('role')->default('cashier');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -35,6 +40,40 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        // Insert default admin users
+        DB::table('users')->insert([
+            [
+                'first_name' => 'Daniel',
+                'last_name' => 'Ramírez',
+                'middle_name' => 'Flores',
+                'role' => 'admin',
+                'email' => 'spartandanii117@gmail.com',
+                'password' => Hash::make('password123'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'first_name' => 'Emiliano',
+                'last_name' => 'Garcia',
+                'middle_name' => 'Oñate',
+                'role' => 'admin',
+                'email' => 'ashraahx@gmail.com',
+                'password' => Hash::make('password123'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'first_name' => 'Yahir',
+                'last_name' => 'López',
+                'middle_name' => 'De Santiago',
+                'role' => 'admin',
+                'email' => 'lopezyahir884@gmail.com',
+                'password' => Hash::make('password123'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 
     /**
