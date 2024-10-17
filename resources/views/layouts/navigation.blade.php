@@ -3,7 +3,7 @@
         <ul class="list-none mb-[0.2rem]">
             <li class="flex justify-end mb-4">
                 <span class="flex-grow">
-                    <x-application-logo class="flex-shrink-0 fill-[#9197b3]"/>
+                    <x-application-logo width="150" height="50" class="flex-shrink-0 fill-[#9197b3]"/>
                 </span>
                 <button onclick=toggleSidebar() id="toggle-btn" class="dropdown-btn ml-auto p-[1em] border-0 rounded-[0.5em] bg-transparent cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" class=" fill-[#9197b3] transition-transform duration-150 ease-in-out hover:fill-black"  height="24px" viewBox="0 -960 960 960" width="24px">
@@ -129,12 +129,14 @@
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <a href="{{ route('logout') }}" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em]">
+                            <x-nav-link :href="route('logout')"
+                             onclick="event.preventDefault();
+                             this.closest('form').submit();" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em]">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 fill-current" width="24px" height="24px" viewBox="0 0 512 512">
                                     <path d="M304 336v40a40 40 0 01-40 40H104a40 40 0 01-40-40V136a40 40 0 0140-40h152c22.09 0 48 17.91 48 40v40M368 336l80-80-80-80M176 256h256" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                                 </svg>
                                 {{ __('Log Out') }}
-                            </a>
+                            </x-nav-link>
                         </form>
                     </li>
                 </div>
