@@ -15,13 +15,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
+            $table->string('name');
             $table->string('last_name');
             $table->string('middle_name');
             $table->string('role')->default('cashier');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('status')->default('active');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -44,32 +46,35 @@ return new class extends Migration
         // Insert default admin users
         DB::table('users')->insert([
             [
-                'first_name' => 'Daniel',
+                'name' => 'Daniel',
                 'last_name' => 'Ramírez',
                 'middle_name' => 'Flores',
                 'role' => 'admin',
                 'email' => 'spartandanii117@gmail.com',
                 'password' => Hash::make('password123'),
+                'status' => 'active',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'first_name' => 'Emiliano',
+                'name' => 'Emiliano',
                 'last_name' => 'Garcia',
                 'middle_name' => 'Oñate',
                 'role' => 'admin',
                 'email' => 'ashraahx@gmail.com',
                 'password' => Hash::make('password123'),
+                'status' => 'active',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'first_name' => 'Yahir',
+                'name' => 'Yahir',
                 'last_name' => 'López',
                 'middle_name' => 'De Santiago',
                 'role' => 'admin',
                 'email' => 'lopezyahir884@gmail.com',
                 'password' => Hash::make('password123'),
+                'status' => 'active',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

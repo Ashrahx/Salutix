@@ -10,7 +10,7 @@
           <div class="mb-3 text-4xl">
             <x-application-logo class="w-56"/>
           </div>
-          <span class="font-light text-gray-400 mb-8">
+          <span class="font-light text-gray-400">
             Welcom back! Please enter your details
           </span>
           <form method="POST" action="{{ route('login') }}">
@@ -41,9 +41,8 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
           </div>
           <button type="submit"
-            class="w-full bg-[#267eb2] text-white p-2 rounded-lg my-6 hover:bg-[#154e7a]"
->
-            Sign in
+            class="w-full bg-[#267eb2] text-white p-2 rounded-lg my-6 border border-[#267eb2] border-solid border-1 hover:bg-transparent hover:text-[#267eb2]">
+            {{ __('Sign in') }}
           </button>
         
         </div>
