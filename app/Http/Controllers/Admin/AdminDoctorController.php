@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
-class CashierController extends Controller
+class AdminDoctorController extends Controller
 {
     public function index()
     {
-        $cashiers = User::where('role', 'cashier')->with('creator')->orderBy('id', 'desc')->get();
-        return view('admin.cashiers', compact('cashiers'));
+        $doctors = User::where('role', 'doctor')->with('creator')->orderBy('id', 'desc')->get();
+        return view('admin.doctors', compact('doctors'));
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class CashierController extends Controller
             'middle_name' => $request->middle_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'cashier',
+            'role' => 'doctor',
             'status' => 'active',
             'created_by' => Auth::id(),
         ]);

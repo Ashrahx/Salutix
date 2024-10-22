@@ -75,13 +75,8 @@
               <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Middle name') }}</th>
               <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Gender') }}</th>
               <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Birth date') }}</th>
-              <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Weight') }}</th>
-              <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Height') }}</th>
-              <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Allergies') }}</th>
-              <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Medical history') }}</th>
               <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Created by') }}</th>
               <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Created at') }}</th>
-              <th class="p-4 px-2 text-left border-b border-gray-300 font-medium">{{ __('Updated at') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -90,6 +85,7 @@
               <td class="p-4 text-left border-b border-gray-300 font-medium">{{ $patient->name }}</td>
               <td class="p-4 text-left border-b border-gray-300 font-medium">{{ $patient->last_name }}</td>
               <td class="p-4 text-left border-b border-gray-300 font-medium">{{ $patient->middle_name }}</td>
+              <td class="p-4 text-left border-b border-gray-300 font-medium">{{ $patient->gender ?? '' }}</td>
               <td class="p-4 text-left border-b border-gray-300 font-medium">{{ $patient->creator->name }} {{ $patient->creator->last_name }}</td>
             </tr>
             @empty

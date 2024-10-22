@@ -95,11 +95,9 @@
                 </ul>
             </li>
             <li class="mb-[0.2rem]">
-                <a href="#" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 fill-current" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z" />
-                    </svg>
-                    <span class="flex-grow">Calendar</span>
+                <a href="{{ route('cashier') }}" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white {{ Request::routeIs('cashiers') ? 'bg-[#267eb2] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 fill-current" height="24px" width="24px" fill="#e8eaed" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M366.05 146a46.7 46.7 0 01-2.42-63.42 3.87 3.87 0 00-.22-5.26l-44.13-44.18a3.89 3.89 0 00-5.5 0l-70.34 70.34a23.62 23.62 0 00-5.71 9.24h0a23.66 23.66 0 01-14.95 15h0a23.7 23.7 0 00-9.25 5.71L33.14 313.78a3.89 3.89 0 000 5.5l44.13 44.13a3.87 3.87 0 005.26.22 46.69 46.69 0 0165.84 65.84 3.87 3.87 0 00.22 5.26l44.13 44.13a3.89 3.89 0 005.5 0l180.4-180.39a23.7 23.7 0 005.71-9.25h0a23.66 23.66 0 0114.95-15h0a23.62 23.62 0 009.24-5.71l70.34-70.34a3.89 3.89 0 000-5.5l-44.13-44.13a3.87 3.87 0 00-5.26-.22 46.7 46.7 0 01-63.42-2.32z"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" stroke-linecap="round" d="M250.5 140.44l-16.51-16.51M294.52 184.46l-11.01-11M338.54 228.49l-11-11.01M388.07 278.01l-16.51-16.51"/></svg>
+                    <span class="flex-grow">{{ __('Cashier') }}</span>
                 </a>
             </li>
         </ul>
@@ -112,7 +110,7 @@
                     </div>
 
                     <div class="names flex flex-col">
-                        <span class="flex-grow">{{ Auth::user()->name }} {{ Auth::user()->last_name }}</span>
+                        <span class="flex-grow">{{ Auth::user()->name }} {{ substr(Auth::user()->last_name, 0, 1) }}.</span>
                         @if (Auth::user()->role === 'admin')
                             <span class="flex-grow text-sm">{{ __('Administrator') }}</span>
                         @elseif (Auth::user()->role === 'doctor')

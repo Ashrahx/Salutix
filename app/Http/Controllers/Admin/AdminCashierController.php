@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+
 use App\Models\User;
 
-class DoctorController extends Controller
+class AdminCashierController extends Controller
 {
     public function index()
     {
-        $doctors = User::where('role', 'doctor')->with('creator')->orderBy('id', 'desc')->get();
-        return view('admin.doctors', compact('doctors'));
+        $cashiers = User::where('role', 'cashier')->with('creator')->orderBy('id', 'desc')->get();
+        return view('admin.cashiers', compact('cashiers'));
     }
 
     public function store(Request $request)
@@ -35,28 +36,28 @@ class DoctorController extends Controller
             'middle_name' => $request->middle_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'doctor',
+            'role' => 'cashier',
             'status' => 'active',
             'created_by' => Auth::id(),
         ]);
 
-        return response()->json(['success' => 'Doctor added successfully!']);
+        return response()->json(['success' => 'Cashier added successfully!']);
     }
 
     public function update(Request $request, $id)
     {
-        $doctor = User::findOrFail($id);
+        $cashier = User::findOrFail($id);
 
         $request->validate([
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'middle_name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . $doctor->id,
+            'email' => 'required|email|unique:users,email,' . $cashier->id,
             'role' => 'required|string',
             'status' => 'required|string',
         ]);
 
-        $doctor->update([
+        $cashier->update([
             'name' => $request->name,
             'last_name' => $request->last_name,
             'middle_name' => $request->middle_name,
@@ -65,13 +66,13 @@ class DoctorController extends Controller
             'status' => $request->status,
         ]);
 
-        return response()->json(['success' => 'Doctor updated successfully!']);
+        return response()->json(['success' => 'Cashier updated successfully!']);
     }
 
     public function destroy($id)
     {
         $doctor = User::findOrFail($id)->delete();
 
-        return response()->json(['success' => 'Doctor deleted successfully!']);
+        return response()->json(['success' => 'Cashier deleted successfully!']);
     }
 }

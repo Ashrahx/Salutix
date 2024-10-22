@@ -110,26 +110,31 @@
         <div class="mb-4">
           <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}</label>
           <input id="name" name="name" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div class="mb-4">
           <label for="last_name" class="block text-sm font-medium text-gray-700">{{ __('Last Name') }}</label>
           <input id="last_name" name="last_name" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
         <div class="mb-4">
           <label for="middle_name" class="block text-sm font-medium text-gray-700">{{ __('Middle Name') }}</label>
           <input id="middle_name" name="middle_name" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('middle_name')" class="mt-2" />
         </div>
 
         <div class="mb-4">
           <label for="email" class="block text-sm font-medium text-gray-700">{{ __('Email') }}</label>
           <input id="email" name="email" type="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div class="mb-4">
           <label for="password" class="block text-sm font-medium text-gray-700">{{ __('Password') }}</label>
           <input id="password" name="password" type="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <div class="mb-4">
@@ -158,22 +163,27 @@
           <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}</label>
           <input type="text" name="name" id="name" value="{{ $admin->name }}" required
             class="w-full p-2 border border-gray-300 rounded">
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
         <div class="mb-4">
           <label for="last_name" class="block text-sm font-medium text-gray-700">{{ __('Last Name') }}</label>
           <input type="text" name="last_name" id="last_name" value="{{ $admin->last_name }}" required
             class="w-full p-2 border border-gray-300 rounded">
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
         <div class="mb-4">
           <label for="middle_name" class="block text-sm font-medium text-gray-700">{{ __('Middle Name') }}</label>
           <input type="text" name="middle_name" id="middle_name" value="{{ $admin->middle_name }}" required
             class="w-full p-2 border border-gray-300 rounded">
+            <x-input-error :messages="$errors->get('middle_name')" class="mt-2" />
         </div>
         <div class="mb-4">
           <label for="email" class="block text-sm font-medium text-gray-700">{{ __('Email') }}</label>
           <input type="email" name="email" id="email" value="{{ $admin->email }}" required
             class="w-full p-2 border border-gray-300 rounded">
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
+
         <div class="flex justify-end">
           <x-secondary-button onclick="closeEditModal()">{{ __('Cancel') }}</x-secondary-button>
           <x-primary-button type="submit">{{ __('Save Changes') }}</x-primary-button>

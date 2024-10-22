@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CashierController;
+
+
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CashierController;
-use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\AdminCashierController;
+use App\Http\Controllers\Admin\AdminDoctorController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -31,16 +35,25 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/users/admins/edit/{id}', [AdminController::class, 'update'])->name('admin.update');
     Route::post('/admin/users/admins', [AdminController::class, 'store'])->name('admin.store');
 
-    Route::get('/admin/doctors', [DoctorController::class, 'index'])->name('doctors');
-    Route::get('/admin/doctors/delete/{id}', [DoctorController::class, 'destroy'])->name('doctor.delete');
-    Route::get('/admin/doctors/edit/{id}', [DoctorController::class, 'update'])->name('doctor.update');
-    Route::post('/admin/doctors', [DoctorController::class,'store'])->name('doctor.store');
+    Route::get('/admin/doctors', [AdminDoctorController::class, 'index'])->name('doctors');
+    Route::get('/admin/doctors/delete/{id}', [AdminDoctorController::class, 'destroy'])->name('doctor.delete');
+    Route::get('/admin/doctors/edit/{id}', [AdminDoctorController::class, 'update'])->name('doctor.update');
+    Route::post('/admin/doctors', [AdminDoctorController::class,'store'])->name('doctor.store');
 
-    Route::get('/admin/cashiers', [CashierController::class, 'index'])->name('cashiers');
-    Route::get('/admin/cashiers/delete/{id}', [CashierController::class, 'destroy'])->name('cashier.delete');
-    Route::get('/admin/cashiers/edit/{id}', [CashierController::class, 'update'])->name('cashier.update');
-    Route::post('/admin/cashiers', [CashierController::class,'store'])->name('cashier.store');
+    Route::get('/admin/cashiers', [AdminCashierController::class, 'index'])->name('cashiers');
+    Route::get('/admin/cashiers/delete/{id}', [AdminCashierController::class, 'destroy'])->name('cashier.delete');
+    Route::get('/admin/cashiers/edit/{id}', [AdminCashierController::class, 'update'])->name('cashier.update');
+    Route::post('/admin/cashiers', [AdminCashierController::class,'store'])->name('cashier.store');
     
+
+});
+
+Route::middleware(['auth', 'cashier'])->group(function () {
+    Route::get('/cashier', [CashierController::class, 'index'])->name('cashier');
+
+    Route::get('/cashier/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/cashier/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/cashier/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 });
 
