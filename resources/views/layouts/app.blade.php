@@ -15,7 +15,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="min-h-screen bg-[#F0F4FF] grid grid-cols-[auto_1fr]">
+    <body {{ $attributes }} class="min-h-screen bg-[#F0F4FF] grid grid-cols-[auto_1fr]">
         @include('layouts.navigation')
 
          <!-- Page Content -->

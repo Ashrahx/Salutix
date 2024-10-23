@@ -17,11 +17,12 @@ return new class extends Migration
             $table->string('last_name', 25);
             $table->string('middle_name', 25);
             $table->string('gender', 20);
-            $table->date('birthdate');
+            $table->date('birthdate')->nullable();
             $table->text('allergies', 100)->nullable();
             $table->text('medical_history', 100)->nullable();
             $table->decimal('weight', 5, 2);
             $table->decimal('height', 5, 2);
+            
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

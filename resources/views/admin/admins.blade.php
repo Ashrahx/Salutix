@@ -20,7 +20,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="flex justify-between items-center p-5 border-b border-gray-300">
-          <h2 class="text-[1.375rem] font-bold m-0">{{ __ ('Administrators') }}</h2>
+          <h2 class="text-[1.375rem] font-bold m-0">{{ __ ('Admins') }}</h2>
           @if(Session::has('success'))
           <div role="alert">
             {{ Session::get('success') }}
@@ -35,7 +35,7 @@
               </svg>
               <input placeholder="{{ __ ('Search') }}" type="search" class="w-full h-10 leading-7 py-4 pl-10 border-2 border-transparent rounded-lg outline-none bg-gray-100 text-black transition ease-in-out duration-300 placeholder:text-[#9197B3]">
             </div>
-            <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" onclick="showModal()">
+            <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" onclick="showModal()">
               {{ __ ('Add') }}
             </a>
           </div>
@@ -87,7 +87,7 @@
             </tr>
             @empty
             <tr>
-              <td colspan="6">
+              <td colspan="7" class="text-center py-6">
                 {{ __('There are no admins') }}
               </td>
             </tr>

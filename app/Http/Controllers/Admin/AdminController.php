@@ -35,7 +35,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'admin',
-            'status' => 'active',
+            'status' => 'inactive',
         ]);
 
         return response()->json(['success' => 'Administrator added successfully!']);

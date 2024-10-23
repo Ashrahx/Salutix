@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('email', 50)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('status', 12)->default('active');
+            $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();
@@ -52,7 +52,6 @@ return new class extends Migration
                 'role' => 'admin',
                 'email' => 'spartandanii117@gmail.com',
                 'password' => Hash::make('password123'),
-                'status' => 'active',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -63,7 +62,6 @@ return new class extends Migration
                 'role' => 'admin',
                 'email' => 'ashraahx@gmail.com',
                 'password' => Hash::make('password123'),
-                'status' => 'active',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -74,7 +72,6 @@ return new class extends Migration
                 'role' => 'admin',
                 'email' => 'lopezyahir884@gmail.com',
                 'password' => Hash::make('password123'),
-                'status' => 'active',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

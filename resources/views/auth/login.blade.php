@@ -11,38 +11,38 @@
             <x-application-logo class="w-56"/>
           </div>
           <span class="font-light text-gray-400">
-            Welcom back! Please enter your details
+            {{ __('Welcom back!') }} {{ __('Please enter your details') }}.
           </span>
           <form method="POST" action="{{ route('login') }}">
            @csrf
           <div class="pt-4">
-            <span class="mb-2 text-md">Email</span>
+            <span class="mb-2 text-md">{{ __('Email') }}</span>
             <input
               id="email"
               type="email"
               name="email"
               required
               autofocus
-              placeholder="Enter your Email"
+              placeholder="{{ __('Enter your email')}}"
               class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
             />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
           </div>
           <div class="py-4">
-            <span class="mb-2 text-md">Password</span>
+            <span class="mb-2 text-md">{{ __('Password') }}</span>
             <input
               id="password"
               type="password"
               name="password"
               required
-              placeholder="Enter your password"
+              placeholder="{{ __('Enter your password') }}"
               class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
             />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
           </div>
           <button type="submit"
             class="w-full bg-[#267eb2] text-white p-2 rounded-lg my-6 border border-[#267eb2] border-solid border-1 hover:bg-transparent hover:text-[#267eb2]">
-            {{ __('Sign in') }}
+            {{ __('Log in') }}
           </button>
         
         </div>

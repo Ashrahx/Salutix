@@ -27,8 +27,12 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        if($request->user()->role == 'admin'){
-            return redirect('/');
+
+        /** @var \App\Models\User $user **/
+        $user = Auth::user();
+        if ($user) {
+            $user->status = 'active';
+            $user->save();
         }
 
         return redirect()->intended(route('home'));
@@ -39,6 +43,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+
+        /** @var \App\Models\User $user **/
+        $user = Auth::user();
+        if ($user) {
+            $user->status = 'inactive';
+            $user->save();
+        }
+
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

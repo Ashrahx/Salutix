@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CashierController;
+use App\Http\Controllers\TurnController;
 
 
 use App\Http\Controllers\Admin\AdminController;
@@ -25,11 +26,6 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-
     Route::get('/admin/users/admins', [AdminController::class, 'index'])->name('admins');
     Route::get('/admin/users/admins/delete/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
     Route::get('/admin/users/admins/edit/{id}', [AdminController::class, 'update'])->name('admin.update');
@@ -50,11 +46,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'cashier'])->group(function () {
     Route::get('/cashier', [CashierController::class, 'index'])->name('cashier');
-
-    Route::get('/cashier/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/cashier/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/cashier/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::post('/cashier', [CashierController::class, 'store'])->name('patients.store');
+    Route::get('turns/assign/{patient}', [TurnController::class, 'assignTurn'])->name('turns.assign');
 });
+
+Route::get('lobby', [TurnController::class, 'index'])->name('lobby');
 
 require __DIR__.'/auth.php';

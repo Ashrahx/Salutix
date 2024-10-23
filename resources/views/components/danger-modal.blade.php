@@ -9,7 +9,7 @@
         <div class="mt-3 text-center">
             <span id="modalTitle" class="text-gray-900 text-base font-semibold leading-6">{{ __('Delete user') }}</span>
             <p id="modalMessage" class="mt-2 text-gray-500 text-sm leading-5">
-                 {{ __('Are you sure you want to delete a user? All of your data will be permanently removed. This action cannot be undone.') }}
+                 {{ __('Are you sure you want to delete a user? All of your data will be permanently removed. This action cannot be undone') }}.
             </p>
         </div>
         <div class="my-3 mx-4 bg-gray-50">

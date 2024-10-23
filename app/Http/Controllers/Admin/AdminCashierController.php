@@ -26,8 +26,6 @@ class AdminCashierController extends Controller
             'middle_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8',
-            'role' => 'required|string',
-            'status' => 'required|string',
         ]);
 
         User::create([
@@ -37,7 +35,7 @@ class AdminCashierController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'cashier',
-            'status' => 'active',
+            'status' => 'inactive',
             'created_by' => Auth::id(),
         ]);
 

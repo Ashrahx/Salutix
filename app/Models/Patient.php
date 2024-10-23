@@ -21,8 +21,15 @@ class Patient extends Model
         'weight',
         'height',
     ];
+
+    public function turns()
+    {
+        return $this->hasMany(Turn::class);
+    }
+    
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+    
 }

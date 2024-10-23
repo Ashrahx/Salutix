@@ -17,7 +17,7 @@
                         <path d="M80 212v236a16 16 0 0016 16h96V328a24 24 0 0124-24h80a24 24 0 0124 24v136h96a16 16 0 0016-16V212" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                         <path d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256M400 179V64h-48v69" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                     </svg>
-                    <span class="flex-grow">Home</span>
+                    <span class="flex-grow">{{ __('Home') }}</span>
                 </a>
             </li>
             @auth
@@ -26,7 +26,7 @@
                 <button onclick=toggleSubMenu(this) class="dropdown-btn rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] w-full text-left bg-transparent border-0 font-inherit cursor-pointer hover:bg-[#267eb2] hover:text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 fill-current" height="24px" width="24px" fill="#e8eaed" viewBox="0 0 512 512"><path d="M402 168c-2.93 40.67-33.1 72-66 72s-63.12-31.32-66-72c-3-42.31 26.37-72 66-72s69 30.46 66 72z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M336 304c-65.17 0-127.84 32.37-143.54 95.41-2.08 8.34 3.15 16.59 11.72 16.59h263.65c8.57 0 13.77-8.25 11.72-16.59C463.85 335.36 401.18 304 336 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M200 185.94c-2.34 32.48-26.72 58.06-53 58.06s-50.7-25.57-53-58.06C91.61 152.15 115.34 128 147 128s55.39 24.77 53 57.94z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M206 306c-18.05-8.27-37.93-11.45-59-11.45-52 0-102.1 25.85-114.65 76.2-1.65 6.66 2.53 13.25 9.37 13.25H154" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/></svg>
                     <span  class="flex-grow">
-                      Users
+                      {{ __('Users') }}
                     </span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 fill-current" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
                         <path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
@@ -36,17 +36,17 @@
                     <div class="overflow-hidden">
                         <li class="mb-[0.2rem]">
                             <a href="{{ route('admins') }}" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em] {{ Request::routeIs('admins') ? 'bg-[#267eb2] text-white' : '' }}">
-                                Admins
+                                {{ __('Admins') }}
                             </a>
                         </li>
                         <li class="mb-[0.2rem]">
                             <a href="{{ route('doctors') }}" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em] {{ Request::routeIs('doctors') ? 'bg-[#267eb2] text-white' : '' }}">
-                                Doctors
+                                {{ __('Doctors') }}
                             </a>
                         </li>
                         <li class="mb-[0.2rem]">
                             <a href="{{ route('cashiers') }}" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em] {{ Request::routeIs('cashiers') ? 'bg-[#267eb2] text-white' : '' }}">
-                                Cashiers
+                                {{ __('Cashiers') }}
                             </a>
                         </li>
                     </div>
@@ -54,65 +54,29 @@
             </li>
                 @endif
             @endauth
+            @auth
+                @if (auth()->user()->role === 'cashier')
             <li class="mb-[0.2rem]">
-                <button onclick=toggleSubMenu(this) class="dropdown-btn rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] w-full text-left bg-transparent border-0 font-inherit cursor-pointer hover:bg-[#267eb2] hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 fill-current" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="m221-313 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-228q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm0-320 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-548q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm339 353q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h280q17 0 28.5 11.5T880-320q0 17-11.5 28.5T840-280H560Zm0-320q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h280q17 0 28.5 11.5T880-640q0 17-11.5 28.5T840-600H560Z" />
-                    </svg>
-                    <span  class="flex-grow">Todo-Lists</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 fill-current" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
-                    </svg>
-                </button>
-                <ul class="sub-menu grid transition-all duration-300 ease-in-out">
-                    <div class="overflow-hidden">
-                        <li>
-                            <a href="#" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em]">
-                                Work
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em]">
-                                Private
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em]">
-                                Coding
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em]">
-                                Gardening
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white pl-[2em]">
-                                School
-                            </a>
-                        </li>
-                    </div>
-                </ul>
-            </li>
-            <li class="mb-[0.2rem]">
-                <a href="{{ route('cashier') }}" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white {{ Request::routeIs('cashiers') ? 'bg-[#267eb2] text-white' : '' }}">
+                <a href="{{ route('cashier') }}" class="rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] hover:bg-[#267eb2] hover:text-white {{ Request::routeIs('cashier') ? 'bg-[#267eb2] text-white' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 fill-current" height="24px" width="24px" fill="#e8eaed" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M366.05 146a46.7 46.7 0 01-2.42-63.42 3.87 3.87 0 00-.22-5.26l-44.13-44.18a3.89 3.89 0 00-5.5 0l-70.34 70.34a23.62 23.62 0 00-5.71 9.24h0a23.66 23.66 0 01-14.95 15h0a23.7 23.7 0 00-9.25 5.71L33.14 313.78a3.89 3.89 0 000 5.5l44.13 44.13a3.87 3.87 0 005.26.22 46.69 46.69 0 0165.84 65.84 3.87 3.87 0 00.22 5.26l44.13 44.13a3.89 3.89 0 005.5 0l180.4-180.39a23.7 23.7 0 005.71-9.25h0a23.66 23.66 0 0114.95-15h0a23.62 23.62 0 009.24-5.71l70.34-70.34a3.89 3.89 0 000-5.5l-44.13-44.13a3.87 3.87 0 00-5.26-.22 46.7 46.7 0 01-63.42-2.32z"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" stroke-linecap="round" d="M250.5 140.44l-16.51-16.51M294.52 184.46l-11.01-11M338.54 228.49l-11-11.01M388.07 278.01l-16.51-16.51"/></svg>
                     <span class="flex-grow">{{ __('Cashier') }}</span>
                 </a>
             </li>
+                @endif
+            @endauth
         </ul>
         <div class="profile">
             <button onclick=toggleSubMenu(this) class="dropdown-btn py-[5px] px-[6px] rounded-[0.5em] p-[0.85em] no-underline text-[#9197b3] flex items-center gap-x-[1.3em] w-full text-left bg-transparent border-0 font-inherit cursor-pointer hover:bg-[#267eb2] hover:text-white">
 
                 <div class="flex items-center gap-[1.4rem]">
                     <div class="w-[30px] h-[30px] p-[5px] rounded-full">
-                        <img src="{{ asset('images/user.png') }}" alt="user">
+                        <img src="{{ asset('images/user.png') }}" draggable="false">
                     </div>
 
                     <div class="names flex flex-col">
                         <span class="flex-grow">{{ Auth::user()->name }} {{ substr(Auth::user()->last_name, 0, 1) }}.</span>
                         @if (Auth::user()->role === 'admin')
-                            <span class="flex-grow text-sm">{{ __('Administrator') }}</span>
+                            <span class="flex-grow text-sm">{{ __('Admin') }}</span>
                         @elseif (Auth::user()->role === 'doctor')
                             <span class="flex-grow text-sm">{{ __('Doctor') }}</span>
                         @elseif (Auth::user()->role === 'cashier')

@@ -35,7 +35,7 @@
               </svg>
               <input placeholder="{{ __ ('Search') }}" type="search" class="w-full h-10 leading-7 py-4 pl-10 border-2 border-transparent rounded-lg outline-none bg-gray-100 text-black transition ease-in-out duration-300 placeholder:text-[#9197B3]">
             </div>
-            <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" onclick="showModal()">
+            <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" onclick="showModal()">
               {{ __ ('Add') }}
             </a>
           </div>
@@ -87,7 +87,7 @@
             </tr>
             @empty
             <tr>
-              <td colspan="6">
+              <td colspan="7" class="text-center py-6">
                 {{ __('There are no cashiers') }}
               </td>
             </tr>
@@ -110,31 +110,31 @@
         <div class="mb-4">
           <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}</label>
           <input id="name" name="name" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div class="mb-4">
-          <label for="last_name" class="block text-sm font-medium text-gray-700">{{ __('Last Name') }}</label>
+          <label for="last_name" class="block text-sm font-medium text-gray-700">{{ __('Last name') }}</label>
           <input id="last_name" name="last_name" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
         <div class="mb-4">
-          <label for="middle_name" class="block text-sm font-medium text-gray-700">{{ __('Middle Name') }}</label>
+          <label for="middle_name" class="block text-sm font-medium text-gray-700">{{ __('Middle name') }}</label>
           <input id="middle_name" name="middle_name" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('middle_name')" class="mt-2" />
         </div>
 
         <div class="mb-4">
           <label for="email" class="block text-sm font-medium text-gray-700">{{ __('Email') }}</label>
           <input id="email" name="email" type="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div class="mb-4">
           <label for="password" class="block text-sm font-medium text-gray-700">{{ __('Password') }}</label>
           <input id="password" name="password" type="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-        </div>
-
-        <div class="mb-4">
-          <input type="hidden" name="role" value="doctor">
-          <input type="hidden" name="status" value="active">
+          <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <div class="flex justify-end">
