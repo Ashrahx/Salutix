@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CashierController;
 use App\Http\Controllers\TurnController;
+use App\Http\Controllers\DoctorController;
 
 
 use App\Http\Controllers\Admin\AdminController;
@@ -41,7 +42,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/cashiers/edit/{id}', [AdminCashierController::class, 'update'])->name('cashier.update');
     Route::post('/admin/cashiers', [AdminCashierController::class,'store'])->name('cashier.store');
     
+});
 
+Route::middleware(['auth', 'doctor'])->group(function () {
+    Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor');
 });
 
 Route::middleware(['auth', 'cashier'])->group(function () {

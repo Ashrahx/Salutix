@@ -1,75 +1,78 @@
 <x-app-layout>
-<div class="min-h-screen flex flex-col items-center pt-8">
-        <!-- Header -->
-        <header class="flex items-center space-x-4">
-            <img src="logo.png" alt="Logo" class="h-12">
-            <h1 class="text-4xl font-semibold text-[#2B3172]">Salutix</h1>
-        </header>
-
-        <!-- Gestión y Paciente -->
-        <div class="flex justify-center space-x-8 mt-12">
-            <!-- Gestionar turno -->
-            <div class="bg-white rounded-lg shadow-lg p-6 w-64 flex flex-col items-center">
-                <div class="bg-blue-100 p-4 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-6h3m-3 0H9" />
+    <div class="xl:w-[900px] xl:m-auto">
+        <div class="flex gap-x-10 justify-center">
+            <div class=" px-6 py-8 bg-white rounded-2xl flex flex-col items-center w-full xl:py-2">
+                <h2 class="text-2xl font-bold">Gestor de turnos</h2>
+                <a href="" class="py-4 px-8 bg-customBlue rounded-lg mt-5 xl:px-4 xl:py-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-16 xl:w-12" fill="#fff" viewBox="0 0 512 512">
+                        <path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z" />
                     </svg>
-                </div>
-                <button class="mt-4 text-xl font-semibold text-blue-600">Finalizar</button>
+                </a>
+                <span class="mt-3 text-[17px] font-medium">Llamar cliente</span>
             </div>
 
-            <!-- Información del paciente -->
-            <div class="bg-white rounded-lg shadow-lg p-6 w-64 flex flex-col items-center">
-                <div class="bg-gray-200 p-4 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A5 5 0 016.344 4.12m11.313 13.684A5 5 0 0117.656 4.12m0 0A5 5 0 014.12 6.344m0 0a5 5 0 0113.684 11.313M5.12 17.804l-.707-.707m-.707-.707l-.707-.707m-.707-.707l-.707-.707" />
-                    </svg>
-                </div>
-                <div class="mt-4 text-center">
-                    <p class="font-semibold">Nombre: Jane Cooper</p>
-                    <p class="text-sm text-gray-600">Motivo: Consulta</p>
-                    <p class="text-sm text-gray-600">Turno: 045</p>
-                </div>
+            <div class=" px-6 py-8 bg-white rounded-2xl flex flex-col items-center gap-y-3 w-full xl:py-2">
+                <h2 class="text-2xl font-bold">Paciente</h2>
+                <img src="http://127.0.0.1:8000/images/user.png" alt="" class="w-12">
+                <h4 class="font-medium">Nombre: <span>Yahir Lopez</span></h4>
+                <h4 class="font-medium">Motivo: <span>Consulta</span></h4>
+                <h4 class="font-medium">Turno: <span>001</span></h4>
             </div>
         </div>
 
-        <!-- Datos del Paciente -->
-        <div class="bg-white rounded-lg shadow-lg p-8 mt-12 w-2/3">
-            <h2 class="text-2xl font-semibold text-center text-[#2B3172]">Datos del Paciente</h2>
-            <form class="grid grid-cols-3 gap-6 mt-8">
+
+        <form action="" method="POST" class="lg:p-4 space-y-6 lg:space-y-8 bg-white xl:p-3 xl:mt-5 xl:rounded-xl">
+            @csrf
+            <!-- Name and Last Name -->
+            <div class="grid grid-cols-3 gap-6 lg:gap-8">
+                <!-- Name -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Nombre</label>
-                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <x-input-label for="name" :value="__('Name')" class="block text-lg sm:text-xl font-medium text-gray-700" />
+                    <x-text-input type="text" name="name" id="name" class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg" placeholder="{{ __('') }}" />
                 </div>
+
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Sexo</label>
-                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <x-input-label for="last_name" :value="__('Last name')" class="block text-lg sm:text-xl font-medium text-gray-700" />
+                    <x-text-input type="text" name="last_name" id="last_name" class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg" placeholder="{{ __('') }}" />
                 </div>
+
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Peso</label>
-                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <x-input-label for="middle_name" :value="__('Middle name')" class="block text-lg sm:text-xl font-medium text-gray-700" />
+                    <x-text-input type="text" name="middle_name" id="middle_name" class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg" />
                 </div>
+
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Apellido Paterno</label>
-                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <x-input-label for="gender" :value="__('Gender')" class="text-left block text-lg sm:text-xl font-medium text-gray-700" />
+                    <select id="gender" name="gender" class="mt-2 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg">
+                        <option value="male">{{ __('Male') }}</option>
+                        <option value="female">{{ __('Female') }}</option>
+                    </select>
                 </div>
+
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Apellido Materno</label>
-                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <x-input-label for="weight" :value="__('Weight') . '(kg)'" class="block text-lg sm:text-xl font-medium text-gray-700" />
+                    <x-text-input type="number" name="weight" id="weight" class="mt-2 block w-2/6 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg" />
                 </div>
+
+
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Fecha de nacimiento</label>
-                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <x-input-label for="birthdate" :value="__('Birth date')" class="block text-lg sm:text-xl font-medium text-gray-700" />
+                    <x-text-input type="date" name="birthdate" id="birthdate" class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg" />
                 </div>
-                <div class="col-span-2">
-                    <label class="block text-sm font-medium text-gray-700">Alergias</label>
-                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
-                </div>
-                <div class="col-span-3">
-                    <label class="block text-sm font-medium text-gray-700">Historial Médico</label>
-                    <textarea class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500" rows="4"></textarea>
-                </div>
-            </form>
-        </div>
+            </div>
+
+
+            <div>
+                <x-input-label for="allergies" :value="__('Allergies')" class="block text-lg sm:text-xl font-medium text-gray-700" />
+                <textarea name="allergies" id="allergies" class="w-full resize-none rounded-md mt-2 focus:border-blue-500 border-gray-300"></textarea>
+            </div>
+
+            <div>
+                <x-input-label for="medical_history" :value="__('Medical history')" class="block text-lg sm:text-xl font-medium text-gray-700" />
+                <textarea name="medical_history" id="medical_history" class="w-full resize-none rounded-md mt-2 focus:border-blue-500 border-gray-300"></textarea>
+            </div>
+
+        </form>
     </div>
+
 </x-app-layout>

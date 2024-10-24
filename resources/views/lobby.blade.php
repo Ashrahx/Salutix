@@ -30,7 +30,7 @@
                                 <td class="p-4 text-left border-b border-gray-300 font-medium">{{ $turn->turn_number }}</td>
                                 <td class="p-4 text-left border-b border-gray-300 font-medium">{{ $turn->reason == 'consultation' ? __('Consultation') : __('Application') }}</td>
                                 <td class="p-4 text-left border-b border-gray-300 font-medium">
-                                    <span class="px-2.5 py-1.5 rounded-full text-white text-[0.9em] {{ $turn->status == 'on hold' ? 'bg-[#FFFDC5] border border-[#DF9504] rounded-[4px] text-[#DF9504]' 
+                                    <span class="px-2.5 py-1.5 text-[0.9em] {{ $turn->status == 'on hold' ? 'bg-[#FFFDC5] border border-[#DF9504] rounded-[4px] text-[#DF9504]' 
                                         : ($turn->status == 'attending' ? 'bg-[#16C09866] border border-[#00b087] rounded-[4px] text-[#008767]' 
                                         : 'bg-gray-400 border border-gray-800 rounded-[4px] text-gray-800') }}">
                                         {{ __($turn->status) }}
